@@ -3,9 +3,6 @@
 using namespace std;
 
 int main(){
-  //ahocorasick *ab=new ahocorasick(3,"hers","his","she");
-  // string a="she",b="he",c="hers",d="his";
-  // ahocorasick ab(4,a,b,c,d);
   ahocorasick ab(4,string("she"),string("he"),string("hers"),string("his"));
   // ab.add_keyword("she");
   // ab.add_keyword("he");

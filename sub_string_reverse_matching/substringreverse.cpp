@@ -17,32 +17,32 @@ int preprocessing(string pattern,int num){
 
 /**
 Verificating pattern and it's reverse of substring if matching or not
-if 
+if
 */
-bool substr_rev_match(string text, string pattern){
+bool substr_rev_match(string sub_text, string pattern){
   int tsi=0,tei=0,psi=0,pei=0;
   int rev_s=0, rev_e=0;
   int p_size=pattern.size();
-  while(text[tsi] == pattern[psi] && psi<p_size){
+  while(sub_text[tsi] == pattern[psi] && psi<p_size){
     tsi++;
     psi++;
   }
 
-  while(text[p_size-tei-1] == pattern[p_size-pei-1] && p_size-pei-1>0){
+  while(sub_text[p_size-tei-1] == pattern[p_size-pei-1] && p_size-pei-1>0){
     tei++;
     pei++;
   }
 
-  if(psi > p_size - pei - 1){
+  if(psi > p_size - pei -1){
     return true;
   }
 
   rev_s=psi;
   rev_e=p_size-pei-1;
 
-  for(int i=0;i<rev_e-rev_s;i++){
-    if(text[rev_s+i] != pattern[rev_e - i]) return false;
-    if(i==rev_e-rev_s-1) return true;
+  for(int i=0;i<rev_e-rev_s+1;i++){
+    if(sub_text[rev_s+i] != pattern[rev_e - i]) return false;
+    if(i==rev_e-rev_s) return true;
   }
   return false;
 }

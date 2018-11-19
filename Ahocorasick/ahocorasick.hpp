@@ -160,7 +160,7 @@ void Trie::add_keyword(std::string pat){
       current->next_char_node(pat[pat_cur])->set_parent_node(current);
       //current -> next
       current = current->next_char_node(pat[pat_cur]);
-      std::cout << current->node_string() << std::endl;
+      //std::cout << current->node_string() << std::endl;
     }
     //there is char Node, change current
     else{
@@ -187,11 +187,11 @@ void Trie::make_failure_link(){
 
     if(par_fail->is_character(temp->get_node_char()) && par_fail->next_char_node(temp->get_node_char()) != temp){
       temp->set_failure_link(par_fail->next_char_node(temp->get_node_char()));
-      std::cout <<"fail_link : "<<temp->node_string() << " -> " <<temp->get_failure_link()->node_string() << std::endl;
+      //std::cout <<"fail_link : "<<temp->node_string() << " -> " <<temp->get_failure_link()->node_string() << std::endl;
     }
     else{
       temp->set_failure_link(par_fail->get_failure_link());
-      std::cout <<"fail_link : "<<temp->node_string() << " -> " <<temp->get_failure_link()->node_string() << std::endl;
+      //std::cout <<"fail_link : "<<temp->node_string() << " -> " <<temp->get_failure_link()->node_string() << std::endl;
     }
 
 
@@ -199,7 +199,7 @@ void Trie::make_failure_link(){
       Node* node= it->second;
 
       if(!node->get_visited()){
-        std::cout <<"push "<< (*it).first << std::endl;
+        //std::cout <<"push "<< (*it).first << std::endl;
         dq.push_back(node);
         node->set_visited(true);
       }
@@ -217,6 +217,12 @@ private:
   bool is_keyword;
 
 public:
+
+  ahocorasick(){
+    is_keyword=false;
+    tri.init();
+  }
+
   ahocorasick(int cnt,...){
     is_keyword=false;
     tri.init();
@@ -230,11 +236,6 @@ public:
     }
 
     make_failure_link();
-  }
-
-  ahocorasick(){
-    is_keyword=false;
-    tri.init();
   }
 
   void add_keyword(std::string str){
@@ -281,7 +282,7 @@ void ahocorasick::matching(std::string text){
       }
     }
 
-    std::cout << i <<" "<< tri.current->node_string() << std::endl;
+    //std::cout << i <<" "<< tri.current->node_string() << std::endl;
   }
 }
 
