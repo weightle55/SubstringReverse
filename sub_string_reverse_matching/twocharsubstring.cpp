@@ -60,9 +60,9 @@ void twochar_matching(string text, string pattern, map<char,int> &cmap){
 
     //case that last two characters reverse matched
     else if(last_char == sub_b_last_char && b_last_char == sub_last_char){
-      for(int k=0;k<pattern.size()-2;k++){
-        text[subs_front+k];
-      }
+      st=text.substr(subs_front,pattern.size());
+      sp=pattern.substr(0,pattern.size());
+      ismatch=substr_rev_match(st,sp);
     }
 
     //case that only last one character matched
