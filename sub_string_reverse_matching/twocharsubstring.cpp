@@ -18,19 +18,18 @@ bool substr_rev_match(string sub_text, string pattern){
     pei++;
   }
 
-  if(psi > p_size - pei - 1){
+  if(psi > p_size - pei -1){
     return true;
   }
 
   rev_s=psi;
   rev_e=p_size-pei-1;
 
-  for(int i=0;i<rev_e-rev_s;i++){
+  for(int i=0;i<rev_e-rev_s+1;i++){
     if(sub_text[rev_s+i] != pattern[rev_e - i]) return false;
-    if(i==rev_e-rev_s-1) return true;
+    if(i==rev_e-rev_s) return true;
   }
   return false;
-
 }
 
 //
